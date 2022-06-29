@@ -3,6 +3,7 @@ class QuizBrain:
         self.question_number=0
         self.score=0
         self.question_list=u_question_list
+        #metodo para verificar si todavia tiene preguntas 
     def still_has_question(self):
         return self.question_number <= len(self.question_list)-1
 
