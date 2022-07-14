@@ -9,7 +9,7 @@ class Food(Turtle) :#we make the food class being the child class of turtle
         self.color("blue")
         self.speed("fastest")
         self.refres()
-    def refres(self):
-        random_x=random.randint(-280,280)
-        random_y =random.randint(-280, 280)
-        self.goto(random_x,random_y)
+    def refres(self):#this funtion puts the food in a random place
+        random_x=random.randint(-280,280)#generate a random x position
+        random_y =random.randint(-280, 280)#generate a random y position
+        self.goto(random_x,random_y)#set the position of the object
