@@ -35,3 +35,36 @@ class Snake :
     def left (self):
         if self.segments[0].heading() != RIGHT:
             self.segments[0].setheading(180)
+    def increase_snake(self):
+        if self.segments[-1].heading() != DOWN:
+            x_cor=self.segments[-1].xcor()
+            y_cor = self.segments[-1].ycor()+20
+            new_segment = Turtle(shape="square")
+            new_segment .color("white")
+            new_segment .penup()
+            new_segment .goto(x_cor,y_cor)
+            self.segments.append(new_segment )
+        elif self.segments[-1].heading() != UP:
+            x_cor=self.segments[-1].xcor()
+            y_cor = self.segments[-1].ycor()-20
+            new_segment = Turtle(shape="square")
+            new_segment .color("white")
+            new_segment .penup()
+            new_segment .goto(x_cor,y_cor)
+            self.segments.append(new_segment )
+        elif self.segments[-1].heading() != RIGHT:
+            x_cor=self.segments[-1].xcor()-20
+            y_cor = self.segments[-1].ycor()
+            new_segment = Turtle(shape="square")
+            new_segment .color("white")
+            new_segment .penup()
+            new_segment .goto(x_cor,y_cor)
+            self.segments.append(new_segment )
+        else:
+            x_cor=self.segments[-1].xcor()+20
+            y_cor = self.segments[-1].ycor()
+            new_segment = Turtle(shape="square")
+            new_segment .color("white")
+            new_segment .penup()
+            new_segment .goto(x_cor,y_cor)
+            self.segments.append(new_segment )

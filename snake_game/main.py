@@ -26,6 +26,15 @@ while game_is_on:
     if snake.segments[0].distance(food)<15:#we use the distance method to measure the distance of the head of the snake with the food
         food.refres()
         board.increase_score()
-
+        snake.increase_snake()
+    #detect collision with the wall
+    if snake.segments[0].xcor()>280 or snake.segments[0].ycor()>280 or snake.segments[0].xcor()<-280 or snake.segments[0].ycor()<-280:
+        board.game_over()
+        game_is_on=False
+    #detect collision with the tail
+    for position in range(2,len(snake.segments)):
+        if snake.segments[0].distance(snake.segments[position])<15:#we detect the distance between the head and the tail
+            board.game_over()
+            game_is_on=False
 
 screen.exitonclick()
