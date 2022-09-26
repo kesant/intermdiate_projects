@@ -18,3 +18,8 @@ while game_is_on:
     screen.update()
     cars.create_cars()
     cars.move_car()
+    #detect the collision of the turtle  with the car
+    for car in cars.all_cars:
+        if car.distance(player)<20:
+            game_is_on=False
+screen.exitonclick()
