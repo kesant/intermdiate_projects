@@ -9,7 +9,7 @@ class Snake :
     def __init__(self):
         self.segments=[]
         self.create_snake()
-
+        self.head=self.segments[0]
     def create_snake(self):
         for i in range(3):
             new_segment = Turtle(shape="square")
@@ -35,6 +35,13 @@ class Snake :
     def left (self):
         if self.segments[0].heading() != RIGHT:
             self.segments[0].setheading(180)
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000,1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+
     def increase_snake(self):
         if self.segments[-1].heading() != DOWN:
             x_cor=self.segments[-1].xcor()
