@@ -37,7 +37,7 @@ print(monday_temp_f)
 
 
 data_dict={
-    "students":["amy","james","angela"]
+    "students":["amy","james","angela"],
     "scores":[76,56,65]
 }
 data2=pandas.DataFrame(data_dict)
