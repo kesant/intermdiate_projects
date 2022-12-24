@@ -1,16 +1,14 @@
 # This is a sample Python script.
+import tkinter #se importa la libreria de tkinter
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+window= tkinter.Tk()#se creo la pantalla
+#aqui se comienza con el codigo de va en este espacio
+window.title("My first GUI program")#agrega el titulo  a la pantalla
+window.minsize(width=500,height=300)#definimos el tamano por default de la pantalla
+
+#Label
+my_label=tkinter.Label(text="aqui mi primera GUI")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+window.mainloop()#se establece el loop para que la pantalla se mantenga,siempre tiene que ir al final del programa
