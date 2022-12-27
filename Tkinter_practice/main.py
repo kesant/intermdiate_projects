@@ -10,6 +10,8 @@ window.minsize(width=500,height=300)#definimos el tamano por default de la panta
 my_label=Label(text="aqui mi primera GUI",font=("Arial",24,"bold"))
 #una vez creado el label tenemos que indicar como lo vamos a mostrar en la pantalla
 my_label.pack()#muestra el label cente  rado en la pantalla
+
+
 #button
 def button_clicked():
     print("i got clicked")
@@ -17,6 +19,8 @@ def button_clicked():
     my_label.config(text=new_text)
 button=Button(text="click Me" , command=button_clicked)
 button.pack()
+
+
 #entry component
 input= Entry(width=10)#we add a chart o add text
 input.pack()
