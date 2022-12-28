@@ -9,8 +9,8 @@ window.minsize(width=500,height=300)#definimos el tamano por default de la panta
 #Label
 my_label=Label(text="aqui mi primera GUI",font=("Arial",24,"bold"))
 #una vez creado el label tenemos que indicar como lo vamos a mostrar en la pantalla
-my_label.pack()#muestra el label cente  rado en la pantalla
-
+#my_label.pack()#muestra el label cente  rado en la pantalla
+my_label.grid(column=0,row=0) #use the grid method to specify the position of the label
 
 #button
 def button_clicked():
@@ -18,12 +18,14 @@ def button_clicked():
     new_text=input.get()
     my_label.config(text=new_text)
 button=Button(text="click Me" , command=button_clicked)
-button.pack()
+button.grid(column=1,row=1)
+new_button=Button(text=" im a new button Me" )
+new_button.grid(column=2,row=0)
 
 
 #entry component
 input= Entry(width=10)#we add a chart o add text
-input.pack()
+input.grid(column=3,row=3)
 print(input.get())#with .get we get the information inside the chart
 
 
