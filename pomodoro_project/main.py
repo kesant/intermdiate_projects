@@ -18,5 +18,34 @@ LONG_BREAK_MIN = 20
 # ---------------------------- UI SETUP ------------------------------- #
 window=Tk()
 window.title("Pomodoro")
+window.config(padx=100,pady=50,bg=YELLOW)#the atribute bg is for the background
+#label
+label = Label(text="Timer",font=(FONT_NAME,24,"bold"),fg=GREEN)#fg is for foreground
+label.grid(column=1,row=0)
+
+#buttons
+start_button=Button(text="Start")
+reset_button=Button(text="Reset")
+start_button.grid(column=0,row=2)
+reset_button.grid(column=2,row=2)
+
+#chek marks
+checked_state = IntVar()
+checkbutton = Checkbutton(text="✓", variable=checked_state)
+checked_state.get()
+checkbutton.grid(column=1,row=3)
+
+
+
+canvas=Canvas(width=200,height=224,bg=YELLOW,highlightthickness=0)#the atribute bg is for the background
+#highlightthickness is a atribute for the border of the canvas
+#it is necesary make a photoimage to use the create_image
+tomato_img=PhotoImage(file="tomato.png")
+canvas.create_image(100,112,image=tomato_img)
+canvas.create_text(100,130,text="00:00",fill="white",font=(FONT_NAME,35,"bold"))
+canvas.grid(column=1,row=1)
+
+
+
 
 window.mainloop()
