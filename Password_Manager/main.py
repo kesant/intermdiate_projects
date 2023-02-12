@@ -31,8 +31,14 @@ email_user_label.grid(row=2,column=0)
 password_label.grid(row=3,column=0)
 
 #ENTRIES
+website_entry=tkinter.Entry(width=35)
+email_user_entry=tkinter.Entry(width=35)
+password_entry=tkinter.Entry(width=21)
+website_entry.grid(row=1,column=1,columnspan=2)
+email_user_entry.grid(row=2,column=1,columnspan=2)
+password_entry.grid(row=3,column=1)
 
-
+#BUTTONS
 
 
 window.mainloop()
