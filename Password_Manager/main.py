@@ -34,11 +34,17 @@ password_label.grid(row=3,column=0)
 website_entry=tkinter.Entry(width=35)
 email_user_entry=tkinter.Entry(width=35)
 password_entry=tkinter.Entry(width=21)
+#the columnspan attribute indicates how many columns it want the element go across
 website_entry.grid(row=1,column=1,columnspan=2)
 email_user_entry.grid(row=2,column=1,columnspan=2)
 password_entry.grid(row=3,column=1)
 
 #BUTTONS
+password_button=tkinter.Button(text="Generate password" )
+add_button=tkinter.Button(text="Add",width=36)
+password_button.grid(row=3,column=2)
+add_button.grid(row=4,column=1,columnspan=2)
+
 
 
 window.mainloop()
