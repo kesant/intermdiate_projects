@@ -6,6 +6,8 @@ FONT=("Arial",10,"bold")
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
+
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def  guardar_informacion():
     website= website_entry.get()
@@ -15,7 +17,8 @@ def  guardar_informacion():
         # changing the mode to a its that we are going to add new information
         # to the file
         file.write(f"\n {website}|{email}|{password}")
-        website_entry.delete(0, END)
+        website_entry.delete(0, END)#with the funtion delete we will be deleting the information in the charts after
+        #clicking add button
         password_entry.delete(0, END)
 
 # ---------------------------- UI SETUP ------------------------------- #
