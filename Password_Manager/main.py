@@ -1,25 +1,69 @@
 import tkinter
 from tkinter import Canvas, END
 from tkinter import PhotoImage
-
+from tkinter import  messagebox
+import random
 FONT=("Arial",10,"bold")
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def generate_password():
+    password_entry.delete(0, END)
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
+    nr_letters = random.randint(8, 10)
+    nr_symbols = random.randint(2, 4)
+    nr_numbers = random.randint(2, 4)
+
+    password_list = []
+
+    for char in range(nr_letters):
+      password_list.append(random.choice(letters))
+
+    for char in range(nr_symbols):
+      password_list += random.choice(symbols)
+
+    for char in range(nr_numbers):
+      password_list += random.choice(numbers)
+
+    random.shuffle(password_list)
+
+    password = ""
+    for char in password_list:
+      password += char
+
+    password_entry.insert(0,password)
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+def check_lenght():
+    website= website_entry.get()
+    email= email_user_entry.get()
+    password= password_entry.get()
+    if len(website) and len(password) !=0:
+        return True
+    else:
+        return False
 def  guardar_informacion():
     website= website_entry.get()
     email= email_user_entry.get()
     password= password_entry.get()
-    with open("important_information.txt", mode="a") as file:
-        # changing the mode to a its that we are going to add new information
-        # to the file
-        file.write(f"\n {website}|{email}|{password}")
-        website_entry.delete(0, END)#with the funtion delete we will be deleting the information in the charts after
-        #clicking add button
-        password_entry.delete(0, END)
+    #with this funtion we can ask the users with a pop up if we want save or not the information
+    #the result its saved in a boolean in the variable is_ok
+
+    if check_lenght():
+        is_ok = messagebox.askokcancel(title=website, message=f"theses are the details entered: \nEmail: {email}"                                                     f"\nPassword: {password} \n is it ok to save?")
+        if is_ok:
+            with open("important_information.txt", mode="a") as file:
+                # changing the mode to a its that we are going to add new information
+                # to the file
+                file.write(f"\n {website}|{email}|{password}")
+                website_entry.delete(0, END)#with the funtion delete we will be deleting the information in the charts after
+                #clicking add button
+                password_entry.delete(0, END)
+    else:
+        messagebox.showinfo(title="Error",message="Please don't leave any field empty!!")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -61,7 +105,7 @@ password_entry.grid(row=3,column=1)#adding the pad it can be spaced between elem
 
 
 #BUTTONS
-password_button=tkinter.Button(text="Generate Password")
+password_button=tkinter.Button(text="Generate Password",command=generate_password)
 password_button.grid(row=3,column=2)
 add_button=tkinter.Button(text="Add",width=36,command=guardar_informacion)
 add_button.grid(row=4,column=1,columnspan=2)
