@@ -36,6 +36,7 @@ def generate_password():
     password_entry.insert(0,password)
 
 
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def check_lenght():
     website= website_entry.get()
