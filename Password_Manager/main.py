@@ -39,7 +39,18 @@ def generate_password():
     pyperclip.copy(password)#we copying the generated password to clivkboaard
     password_entry.insert(0,password)
 
-
+# ---------------------------- SEARCH INFO -------------------------------#
+def search_info():
+    website = website_entry.get().lower()
+    with open("important_information.json", mode="r") as file:
+        # READ DATA
+        data = json.load(file)
+        password=data[website]["Password"]
+        email=data[website]["Email"]
+        messagebox.askokcancel(title="informaction", message=f"theses are the information: \nWebsite: {website}"
+                                                      f"\nEmail: {email} "
+                                                      f"\nPassword: {password}\n")
+        pyperclip.copy(password)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def check_lenght():
     website= website_entry.get()
@@ -50,8 +61,8 @@ def check_lenght():
     else:
         return False
 def  guardar_informacion():
-    website= website_entry.get()
-    email= email_user_entry.get()
+    website= website_entry.get().lower()
+    email= email_user_entry.get().lower()
     password= password_entry.get()
     #with this funtion we can ask the users with a pop up if we want save or not the information
     #the result its saved in a boolean in the variable is_ok
@@ -63,7 +74,8 @@ def  guardar_informacion():
     }
 
     if check_lenght():
-        is_ok = messagebox.askokcancel(title=website, message=f"theses are the details entered: \nEmail: {email}"                                                     f"\nPassword: {password} \n is it ok to save?")
+        is_ok = messagebox.askokcancel(title=website, message=f"theses are the details entered: \nEmail: {email}"                                                     
+                                                              f"\nPassword: {password} \n is it ok to save?")
         if is_ok:
             try:
                 # with open("important_information.json", mode="r") as file: #we are using the w parameter to write in the json file
@@ -140,6 +152,8 @@ password_entry.grid(row=3,column=1)#adding the pad it can be spaced between elem
 
 
 #BUTTONS
+search_button=tkinter.Button(text="Search",width=21,command=search_info)
+search_button.grid(row=1,column=3)
 password_button=tkinter.Button(text="Generate Password",command=generate_password)
 password_button.grid(row=3,column=2)
 add_button=tkinter.Button(text="Add",width=36,command=guardar_informacion)
