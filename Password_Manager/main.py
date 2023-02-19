@@ -156,11 +156,11 @@ password_entry.grid(row=3,column=1)#adding the pad it can be spaced between elem
 
 
 #BUTTONS
-search_button=tkinter.Button(text="Search",width=21,command=search_info)
+search_button=tkinter.Button(text="Search",width=15,command=search_info)
 search_button.grid(row=1,column=3)
 password_button=tkinter.Button(text="Generate Password",command=generate_password)
-password_button.grid(row=3,column=2)
-add_button=tkinter.Button(text="Add",width=36,command=guardar_informacion)
+password_button.grid(row=3,column=3)
+add_button=tkinter.Button(text="Add",width=30,command=guardar_informacion)
 add_button.grid(row=4,column=1,columnspan=2)
 
 
