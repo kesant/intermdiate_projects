@@ -4,6 +4,7 @@ from tkinter import PhotoImage
 from tkinter import  messagebox
 import random
 import pyperclip
+import json
 FONT=("Arial",10,"bold")
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -54,14 +55,27 @@ def  guardar_informacion():
     password= password_entry.get()
     #with this funtion we can ask the users with a pop up if we want save or not the information
     #the result its saved in a boolean in the variable is_ok
+    new_data={
+        website:{
+            "Email" :email,
+            "Password" :password
+        }
+    }
 
     if check_lenght():
         is_ok = messagebox.askokcancel(title=website, message=f"theses are the details entered: \nEmail: {email}"                                                     f"\nPassword: {password} \n is it ok to save?")
         if is_ok:
-            with open("important_information.txt", mode="a") as file:
-                # changing the mode to a its that we are going to add new information
-                # to the file
-                file.write(f"\n {website}|{email}|{password}")
+            with open("important_information.json", mode="r") as file: #we are using the w parameter to write in the json file
+                # changing the mode to a its that we are going to add new information to the file
+                #READ DATA
+                data=json.load(file)
+                #UPDATE DATA
+                data.update(new_data)
+
+            with open("important_information.json", mode="w") as file:
+                #we use the dump funtion to write in the json file , givin asa an argument the dictionary and the file we want to open
+                #WRITE DATA
+                json.dump(data,file,indent=4)#the argument indent gives us the number of spaces we want to indent the information
                 website_entry.delete(0, END)#with the funtion delete we will be deleting the information in the charts after
                 #clicking add button
                 password_entry.delete(0, END)
