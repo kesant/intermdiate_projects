@@ -65,20 +65,38 @@ def  guardar_informacion():
     if check_lenght():
         is_ok = messagebox.askokcancel(title=website, message=f"theses are the details entered: \nEmail: {email}"                                                     f"\nPassword: {password} \n is it ok to save?")
         if is_ok:
-            with open("important_information.json", mode="r") as file: #we are using the w parameter to write in the json file
-                # changing the mode to a its that we are going to add new information to the file
-                #READ DATA
-                data=json.load(file)
-                #UPDATE DATA
-                data.update(new_data)
+            try:
+                # with open("important_information.json", mode="r") as file: #we are using the w parameter to write in the json file
+                #     # changing the mode to a its that we are going to add new information to the file
+                #     #READ DATA
+                #     data=json.load(file)
+                #     #UPDATE DATA
+                #     data.update(new_data)
+                file=open("important_information.json", mode="r")
+            except FileNotFoundError:
+                with open("important_information.json", mode="w") as file:
+                    #we use the dump funtion to write in the json file , givin asa an argument the dictionary and the file we want to open
+                    #WRITE DATA
+                    json.dump(new_data,file,indent=4)#the argument indent gives us the number of spaces we want to indent the information
+                    website_entry.delete(0, END)#with the funtion delete we will be deleting the information in the charts after
+                    #clicking add button
+                    password_entry.delete(0, END)
+            else :
+                file.close()
+                with open("important_information.json", mode="r") as file: #we are using the w parameter to write in the json file
+                    # changing the mode to a its that we are going to add new information to the file
+                    #READ DATA
+                    data=json.load(file)
+                    #UPDATE DATA
+                    data.update(new_data)
+                with open("important_information.json", mode="w") as file:
+                    #we use the dump funtion to write in the json file , givin asa an argument the dictionary and the file we want to open
+                    #WRITE DATA
+                    json.dump(data,file,indent=4)#the argument indent gives us the number of spaces we want to indent the information
+                    website_entry.delete(0, END)#with the funtion delete we will be deleting the information in the charts after
+                    #clicking add button
+                    password_entry.delete(0, END)
 
-            with open("important_information.json", mode="w") as file:
-                #we use the dump funtion to write in the json file , givin asa an argument the dictionary and the file we want to open
-                #WRITE DATA
-                json.dump(data,file,indent=4)#the argument indent gives us the number of spaces we want to indent the information
-                website_entry.delete(0, END)#with the funtion delete we will be deleting the information in the charts after
-                #clicking add button
-                password_entry.delete(0, END)
     else:
         messagebox.showinfo(title="Error",message="Please don't leave any field empty!!")
 
