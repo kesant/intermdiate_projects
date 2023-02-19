@@ -119,7 +119,7 @@ def  guardar_informacion():
 # ---------------------------- UI SETUP ------------------------------- #
 if __name__=="__main__":
     window= tkinter.Tk()
-    
+
     window.title("Password Manager ")#seteamos el titulo de nuestro recuadro
     window.minsize(width=500,height=300)
     window.config(padx=40,pady=40)
