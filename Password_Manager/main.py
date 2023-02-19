@@ -45,12 +45,16 @@ def search_info():
     with open("important_information.json", mode="r") as file:
         # READ DATA
         data = json.load(file)
-        password=data[website]["Password"]
-        email=data[website]["Email"]
-        messagebox.askokcancel(title="informaction", message=f"theses are the information: \nWebsite: {website}"
-                                                      f"\nEmail: {email} "
-                                                      f"\nPassword: {password}\n")
-        pyperclip.copy(password)
+        try:
+            password=data[website]["Password"]
+            email=data[website]["Email"]
+        except:
+            messagebox.showinfo(title="Error",message="you need to type the name of a website")
+        else:
+            messagebox.showinfo(title="informaction", message=f"theses are the information: \nWebsite: {website}"
+                                                          f"\nEmail: {email} "
+                                                          f"\nPassword: {password}\n")
+            pyperclip.copy(password)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def check_lenght():
     website= website_entry.get()
