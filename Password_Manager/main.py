@@ -147,7 +147,7 @@ if __name__=="__main__":
     website_entry.grid(row=1,column=1,columnspan=2)
     website_entry.focus()
     email_user_entry.grid(row=2,column=1,columnspan=2)
-    email_user_entry.insert(0,"kejosant@espol.edu.ec")#insert text at a given index is like when you put a default value
+    #email_user_entry.insert(0,"here you put your email")#insert text at a given index is like when you put a default value
     #the is an alternative as an argument for the funtion insert , if we use .inset(END) it can be a continuation of the  text
 
     password_entry.grid(row=3,column=1)#adding the pad it can be spaced between elements
