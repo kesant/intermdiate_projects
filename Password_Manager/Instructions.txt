@@ -1,0 +1,5 @@
+instructions:
+open the dist folder and you'll find the executable file for the app
+you can generate a safety password with the button generate password
+you can add it to the json file , also you can search the password using the name 
+of th website and clicking on the search button
