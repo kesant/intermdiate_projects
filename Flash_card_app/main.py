@@ -36,7 +36,7 @@ def flip_cards ():
     canvas.itemconfig(card_title,text="English",fill="White")
     canvas.itemconfig(card_word,text=word_english,fill="White")
 
-
+#*****************************FILES******************
 
 #**********************GUI********************************************
 window=tkinter.Tk()
