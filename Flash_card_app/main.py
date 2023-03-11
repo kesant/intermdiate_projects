@@ -2,6 +2,8 @@ import tkinter
 from tkinter import Canvas
 from tkinter import PhotoImage
 from tkinter import *
+
+import pandas
 import  pandas as pd
 import random
 #CONSTANTS
@@ -15,9 +17,15 @@ title="title"
 word="word"
 palabras_traduccion=""
 
-data = pd.read_csv("./data/french_words.csv")
-data_dict = data.to_dict(orient="records")  # records turn the dict into a list of dictionaries
-print(data_dict)
+
+
+try:
+    data = pd.read_csv("./data/words_to_learn.csv")
+except FileNotFoundError:
+    data = pd.read_csv("./data/french_words.csv")
+finally:
+    data_dict = data.to_dict(orient="records")  # records turn the dict into a list of dictionaries
+    print(data_dict)
 #*********************FUNTIONS **********************
 def general_button():
     """select a random letter in french and  set it in the canvas varible"""
@@ -29,12 +37,22 @@ def general_button():
     canvas.itemconfig(card_word,text=word,fill="Black")
     canvas.itemconfig(font_card,image=front_card)
     window.after(3000, flip_cards)
+def right_clicked():
+    general_button()
+    delete_word()
+
 def flip_cards ():
     """flip the card and shows the translation of the word"""
     canvas.itemconfig(font_card,image=back_card)
     word_english=palabras_traduccion["English"]
     canvas.itemconfig(card_title,text="English",fill="White")
     canvas.itemconfig(card_word,text=word_english,fill="White")
+
+def delete_word():
+    """it will delete the word from the list when the user press the check button"""
+    data_dict.remove(palabras_traduccion)
+    new_dataframe=pd.DataFrame(data_dict)
+
 
 #*****************************FILES******************
 
