@@ -31,14 +31,15 @@ finally:
 #*********************FUNTIONS **********************
 def general_button():
     """select a random letter in french and  set it in the canvas varible"""
-    global palabras_traduccion
+    global palabras_traduccion,flipped_card
+    window.after_cancel(flipped_card)
     palabras_traduccion=random.choice(data_dict)
     title="French"
     word=palabras_traduccion[title]
     canvas.itemconfig(card_title,text=title,fill="Black")
     canvas.itemconfig(card_word,text=word,fill="Black")
     canvas.itemconfig(font_card,image=front_card)
-    window.after(3000, flip_cards)
+    flipped_card=window.after(3000,flip_cards)
 def right_clicked():
     general_button()
     delete_word()
@@ -64,7 +65,7 @@ def delete_word():
 window=tkinter.Tk()
 window.title("Flash card app")
 window.config(padx=50,pady=50,bg="#B1DDC6")
-
+flipped_card=window.after(3000,flip_cards)
 
 #IMAGES
 #it is necesary make a photoimage to use the create_image
@@ -90,7 +91,7 @@ card_title=canvas.create_text(400,150,text=title,fill="Black",font=LANGUAGE_FONT
 card_word=canvas.create_text(400,263,text=word,fill="Black",font=WORD_FONT)
 canvas.grid(column=0,row=0,columnspan=2)
 general_button()
-window.after(3000,flip_cards)
+
 
 
 window.mainloop()
