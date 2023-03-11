@@ -25,7 +25,7 @@ except FileNotFoundError:
     data = pd.read_csv("./data/french_words.csv")
 finally:
     data_dict = data.to_dict(orient="records")  # records turn the dict into a list of dictionaries
-    print(data_dict)
+
 
 
 #*********************FUNTIONS **********************
