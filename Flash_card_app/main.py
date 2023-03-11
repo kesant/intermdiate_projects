@@ -18,7 +18,7 @@ word="word"
 palabras_traduccion=""
 
 
-
+#READ THE FILES
 try:
     data = pd.read_csv("./data/words_to_learn.csv")
 except FileNotFoundError:
@@ -26,6 +26,8 @@ except FileNotFoundError:
 finally:
     data_dict = data.to_dict(orient="records")  # records turn the dict into a list of dictionaries
     print(data_dict)
+
+
 #*********************FUNTIONS **********************
 def general_button():
     """select a random letter in french and  set it in the canvas varible"""
@@ -52,6 +54,8 @@ def delete_word():
     """it will delete the word from the list when the user press the check button"""
     data_dict.remove(palabras_traduccion)
     new_dataframe=pd.DataFrame(data_dict)
+    new_dataframe.to_csv("./data/words_to_learn.csv",index=False)
+    print(data_dict)
 
 
 #*****************************FILES******************
@@ -70,7 +74,7 @@ right_image=PhotoImage(file="./images/right.png")
 wrong_image=PhotoImage(file="./images/wrong.png")
 
 #BUTTONS
-right_button = Button(image=right_image, highlightthickness=0,command=general_button)
+right_button = Button(image=right_image, highlightthickness=0,command=right_clicked)
 right_button.grid(column=0,row=1)
 wrong_button = Button(image=wrong_image, highlightthickness=0, command=general_button)
 wrong_button.grid(column=1,row=1)
