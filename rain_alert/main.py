@@ -5,7 +5,7 @@
 import  requests
 
 
-api_key="bb3e7f79f961b9e5eaa7ab9c100880f9"
+api_key=""
 parameters={
     "lat":-2.170998,
     "lon":-79.922356,
