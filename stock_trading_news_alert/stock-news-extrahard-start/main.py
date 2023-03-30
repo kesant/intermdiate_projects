@@ -2,7 +2,7 @@ import requests
 import datetime
 
 STOCK = "TSLA"
-COMPANY_NAME = "Tesla Inc"
+COMPANY_NAME = "Tesla"
 
 ## STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
@@ -49,6 +49,19 @@ print(porcentage_stock)
 ## STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
 
+
+api_endpoint_news="https://newsapi.org/v2/top-headlines"
+api_key_news=""
+parameters_news={
+    "q":COMPANY_NAME,
+    "from":str(date_today),
+    "apiKey":api_key_news,
+
+}
+response_news=requests.get(api_endpoint_news,params=parameters_news)
+response.raise_for_status()
+data_news=response_news.json()
+print(data_news)
 ## STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title and description to your phone number. 
 
