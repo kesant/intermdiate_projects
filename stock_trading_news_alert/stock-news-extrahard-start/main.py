@@ -1,5 +1,7 @@
 import requests
 import datetime
+import os
+from twilio.rest import Client
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla"
@@ -61,11 +63,23 @@ parameters_news={
 response_news=requests.get(api_endpoint_news,params=parameters_news)
 response.raise_for_status()
 data_news=response_news.json()
-print(data_news)
+print(data_news["articles"][:3])
 ## STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title and description to your phone number. 
 
+# Find your Account SID and Auth Token at twilio.com/console
+# and set the environment variables. See http://twil.io/secure
+account_sid = ""
+auth_token = ""
+client = Client(account_sid, auth_token)
+message = client.messages \
+                .create(
+                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+                     from_='+456456546546',
+                     to='+556456456'
+                 )
 
+print(message.sid)
 #Optional: Format the SMS message like this: 
 """
 TSLA: 🔺2%
