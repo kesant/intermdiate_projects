@@ -80,6 +80,8 @@ message = client.messages \
                  )
 
 print(message.sid)
+
+
 #Optional: Format the SMS message like this: 
 """
 TSLA: 🔺2%
