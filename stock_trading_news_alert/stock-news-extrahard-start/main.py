@@ -21,7 +21,7 @@ data=response.json()['Time Series (Daily)']
 
 print(data)
 date_today=datetime.datetime.now().date()
-
+print(date_today)
 number_day_today=datetime.datetime.now().weekday()
 number_day_yesterday=number_day_today-1
 number_day_before_yesterday=number_day_yesterday-1
@@ -49,7 +49,7 @@ print(closing_price_yesterday)
 print(closing_price_day_before_yesterday)
 print(porcentage_stock)
 ## STEP 2: Use https://newsapi.org
-# Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
+# Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
 
 
 api_endpoint_news="https://newsapi.org/v2/top-headlines"
@@ -65,22 +65,19 @@ response.raise_for_status()
 data_news=response_news.json()
 print(data_news["articles"][:3])
 ## STEP 3: Use https://www.twilio.com
-# Send a seperate message with the percentage change and each article's title and description to your phone number. 
+# Send a seperate message with the percentage change and each article's title and description to your phone number.
 
 # Find your Account SID and Auth Token at twilio.com/console
 # and set the environment variables. See http://twil.io/secure
 account_sid = ""
 auth_token = ""
 client = Client(account_sid, auth_token)
-message = client.messages \
-                .create(
-                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
-                     from_='+456456546546',
-                     to='+556456456'
-                 )
-
+message = client.messages.create(
+  body="Hello from Twilio",
+  from_="+14066415511",
+  to="+593987587609"
+)
 print(message.sid)
-
 
 #Optional: Format the SMS message like this: 
 """
