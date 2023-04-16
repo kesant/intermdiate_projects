@@ -40,7 +40,7 @@ print(result)
 ###Step 3 - Setup Your Google Sheet with Sheety##################
 
 
-
+google_sheets_endpoint="https://api.sheety.co/99590fd56f514951e3e0791088f7aa9f/myWorkouts/workouts"
 
 
 
