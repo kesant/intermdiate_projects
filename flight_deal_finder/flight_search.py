@@ -9,10 +9,10 @@ class FlightSearch:
     def update_iataCode(self):
         self.data_sheet=main.sheet_data
         for indice in range(len(self.data_sheet['prices'])):
-            if len(self.data_sheet['prices'][indice]['iataCode'])==0:
-                self.data_sheet['prices'][indice]['iataCode']="TESTING"
+            if len(self.data_sheet['prices'][indice]['iataCode'])!=0:
+                self.data_sheet['prices'][indice]['iataCode']=""
 #################################
 
 flight_data=FlightSearch()
-flight_data.update_date()
+flight_data.update_iataCode()
 pprint(flight_data.data_sheet)
