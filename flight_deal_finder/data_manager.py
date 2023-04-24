@@ -37,5 +37,6 @@ class DataManager:
              pprint(body)
              reponse=requests.put(url=API_GOOGLE_SHEET,json=body)
              reponse.raise_for_status()
+
 manager=DataManager()
 manager.update_sheet()
