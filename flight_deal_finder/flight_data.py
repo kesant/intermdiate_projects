@@ -25,16 +25,18 @@ date_come_back=date_come_back.strftime("%d/%m/%Y")
 
 class FlightData:
     #This class is responsible for structuring the flight data.
-    pass
-    def __init__(self):
-        self.fly_from=""
-        self.fly_to=""
-        self.date_from=""
-        self.date_to=""
-        self.curr=""
-        self.nights_in_dst_from=""
-        self.nights_in_dst_to=""
-
+    def __init__(self,fly_from,fly_to,date_from,date_to,curr,nights_in_dst_from,nights_in_dst_to,
+                 flight_type,one_for_city,max_stopovers):
+        self.fly_from=fly_from
+        self.fly_to=fly_to
+        self.date_from=date_from
+        self.date_to=date_to
+        self.curr=curr
+        self.nights_in_dst_from=nights_in_dst_from
+        self.nights_in_dst_to=nights_in_dst_to
+        self.flight_type=flight_type
+        self.one_for_city=one_for_city
+        self.max_stopovers=max_stopovers
 
         self.data=DATA_FLIGHTS
         self.price=""
