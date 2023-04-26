@@ -5,11 +5,6 @@ from pprint import pprint
 
 
 #EDIT THE ROWS
-API_GOOGLE_SHEET="https://api.sheety.co/99590fd56f514951e3e0791088f7aa9f/flightDeals/prices"
-
-response=requests.get(API_GOOGLE_SHEET)
-sheet_data=response.json()
-pprint(sheet_data)
 #pprint(sheet_data)#print the data in a better way
 
 

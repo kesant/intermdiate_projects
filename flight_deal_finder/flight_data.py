@@ -26,6 +26,7 @@ class FlightData:
 
 
     def get_info_flights(self):
+        """make use of tequila API to search for the cheapest flight with the parameters given to the class """
         headers = {
             "apikey": os.environ["API_KEY_TEQUILA"]
         }
@@ -46,7 +47,9 @@ class FlightData:
         response.raise_for_status()
         result=response.json()
         prices=result['data'][0]['price']
-        pprint(f"{result['data'][0]['countryTo']['name']} : ${prices}")
+        name_city=result['data'][0]['countryTo']['name']
+        return prices
+       # pprint(f"{name_city} : ${prices}")
 
 
 
