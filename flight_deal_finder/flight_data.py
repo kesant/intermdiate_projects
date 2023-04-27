@@ -48,7 +48,8 @@ class FlightData:
         result=response.json()
         prices=result['data'][0]['price']
         name_city=result['data'][0]['countryTo']['name']
-        return prices
+        info=[name_city,prices,self.fly_to]
+        return info
        # pprint(f"{name_city} : ${prices}")
 
 

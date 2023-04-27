@@ -3,7 +3,7 @@ from pprint import pprint
 import os
 from datetime import datetime
 from datetime import timedelta
-
+from notification_manager import NotificationManager
 from flight_data import FlightData
 
 #VARIABLES
@@ -73,7 +73,17 @@ class FlightSearch:
                      FLIGHT_TYPE,ONE_FOR_CITY,MAX_STOPOVERS)
             price_fligts.append(information_flight.get_info_flights())
         return price_fligts
-    def send_notifications(self):
-        pass
+    def send_notifications(self,price_flights):
+        date_tomorrow = datetime.now().date() + timedelta(days=1)
+        date_come_back = date_tomorrow + timedelta(days=6 * 30)
+        date_tomorrow = date_tomorrow.strftime("%d/%m/%Y")
+        date_come_back = date_come_back.strftime("%d/%m/%Y")
+        for result in price_flights:
+            price=result[1]
+            arrival_city_name=result[0]
+            arrival_airport_IATA_code=result[2]
+            notification=NotificationManager(price,DEPARTURE_CITY,START_CITY,arrival_city_name,arrival_airport_IATA_code,
+                     date_tomorrow,date_come_back)
+            notification.send_notification()
 #################################
 
