@@ -20,6 +20,16 @@ def get_info(category,price):
     response=requests.get(f"{LINK}/es/category/{category}?attributes=pricing-{price}")
     resultados=response.text
     return resultados
+#GET THE LINK OF THE TOOL
+def link_herramienta(enlace):
+    response=requests.get(enlace)
+    resultado=response.text
+    soup=BeautifulSoup(resultado,"html.parser")
+    link_tag=soup.find(name="a", class_="flex-1 flex w-full sm:w-36 sm:inline-flex mx-auto bg-blue-1400 justify-center radius-22 py-2 px-4 sm:px-6 hover:bg-blue-1500 focus:bg-blue-1600 to-view-btn")
+    link_final=link_tag.get("href")
+    return link_final
+
+
 #MAKE THE SOUP
 for categoria in CATEGORIES:
     for precio in PRICING:
@@ -30,7 +40,7 @@ for categoria in CATEGORIES:
         title_tags=soup.find_all(name="a",class_="max-w-full inline-block go-tool-detail-name")[:5]
         [titles.append(title.getText().strip("\n")) for title in title_tags]
         #links de las herramientas
-        [link_tools.append(f'{LINK}{tool.get("href")}') for tool in title_tags]
+        [link_tools.append(link_herramienta(f'{LINK}{tool.get("href")}')) for tool in title_tags]
         #descripcion
         description_tag=soup.find_all(name="a",class_="mt-3 text-base text-gray-1500 break-words tool-desc leading-7 go-tool-detail-description")[:5]
         [descriptions.append(description.getText().strip("\n")) for description in description_tag]
