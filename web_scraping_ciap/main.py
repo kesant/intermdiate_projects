@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas
+
 #CONSTANTES
 CATEGORIES=["ai-chatbots","video-generator","image-generator","text-to-speech","summarizer"]
 PRICING=["paid","free"]
@@ -40,9 +42,16 @@ for categoria in CATEGORIES:
         #categoria
         [application.append(categoria) for i in range(5)]
 
-print(titles)
-print(descriptions)
-print(link_tools)
-print(link_images)
-print(prices)
-print(application)
+
+data_dict={
+    "Nombre":titles,
+    "Descripcion":descriptions,
+    "Link de la herramienta":link_tools,
+    "Link de la imagen":link_images,
+    "Pago/Gratis":prices,
+    "Categoria":application
+}
+data=pandas.DataFrame(data_dict)
+print(data)
+#data.to_csv("info_herramientas.csv")
+data.to_excel("herramientas.xlsx",index=False)#create a csv from the data frame given a path
