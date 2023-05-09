@@ -24,18 +24,20 @@ for categoria in CATEGORIES:
         result=get_info(categoria,precio)
         soup=BeautifulSoup(result,"html.parser")
         #GET THE DATA
+        #titulos
         title_tags=soup.find_all(name="a",class_="max-w-full inline-block go-tool-detail-name")[:5]
         [titles.append(title.getText().strip("\n")) for title in title_tags]
-
+        #links de las herramientas
         [link_tools.append(f'{LINK}{tool.get("href")}') for tool in title_tags]
-
+        #descripcion
         description_tag=soup.find_all(name="a",class_="mt-3 text-base text-gray-1500 break-words tool-desc leading-7 go-tool-detail-description")[:5]
         [descriptions.append(description.getText().strip("\n")) for description in description_tag]
-
+        # link de las imagenes
         images=soup.find_all(name="a",class_="flex-shrink-0 px-8 pt-9 tool-linear go-tool-detail-pic")[:5]
         [ link_images.append(image.select_one("img").get("src")) for image in images]
-
+        #precio
         [prices.append(precio) for i in range(5)]
+        #categoria
         [application.append(categoria) for i in range(5)]
 
 print(titles)
